@@ -1,3 +1,14 @@
 # syntax=docker/dockerfile:1.2
-FROM python:latest
-# put you docker configuration here
+FROM python:3.9-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY data/ data/
+COPY challenge/ challenge/
+
+EXPOSE 8080
+
+CMD ["uvicorn", "challenge:app", "--host", "0.0.0.0", "--port", "8080"]

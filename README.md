@@ -119,3 +119,50 @@ We are looking for a proper `CI/CD` implementation for this development.
 
 - Create a new folder called `.github` and copy the `workflows` folder that we provided inside it.
 - Complete both `ci.yml` and `cd.yml`(consider what you did in the previous parts).
+
+
+# Instructions for Part IV
+
+## CI/CD Implementation
+
+### Part IV
+
+We are looking for a proper `CI/CD` implementation for this development.
+
+- Create a new folder called `.github` and copy the `workflows` folder that we provided inside it.
+- Complete both `ci.yml` and `cd.yml`(consider what you did in the previous parts).
+
+
+# Instructions for Part IV
+
+## CI/CD Implementation
+
+### Part IV
+
+We are looking for a proper `CI/CD` implementation for this development.
+
+- Create a new folder called `.github` and copy the `workflows` folder that we provided inside it.
+- Complete both `ci.yml` and `cd.yml`(consider what you did in the previous parts).
+
+
+# ## 🛠️ Instalación
+1. Crear entorno virtual:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # En Windows: venv\Scripts\activate
+   venv\Scripts\activate
+   ```
+   // windows
+   Get-ExecutionPolicy
+      Restricted
+   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+2. Instalar dependencias:
+   python.exe -m pip install --upgrade pip
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Ejecutar la API:
+   ```bash
+   python app.py
+   ```
