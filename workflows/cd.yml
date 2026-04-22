@@ -1,7 +1,24 @@
-name: 'Continuous Delivery'
-
+name: CD Pipeline
 on:
-  ...
+  push:
+    branches: [main]
 
 jobs:
-  ...
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    # Tests primero (CI integrado)
+    - name: Run all tests
+      run: |
+        make model-test
+        make api-test
+        make stress-test  # Tu API en Render
+    
+    # Deploy automático a Render
+    - name: Deploy to Render
+      uses: johnbeynon/render-deploy-action@v0.0.8
+      with:
+        service-id: ${{ secrets.RENDER_SERVICE_ID }}
+        api-key: ${{ secrets.RENDER_API_KEY }}

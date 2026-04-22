@@ -1,7 +1,22 @@
-name: 'Continuous Integration'
-
-on:
-  ...
+name: CI Pipeline
+on: [push, pull_request]
 
 jobs:
-  ...
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with: { python-version: '3.9' }
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+    
+    - name: Run model tests
+      run: make model-test
+      
+    - name: Run API tests
+      run: make api-test
