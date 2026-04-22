@@ -1,11 +1,7 @@
 # Flight Delay Prediction — Challenge Documentation
-
 ## 1. Model Selection & Justification
-
 ### Chosen Model: XGBoost Classifier with Class Balancing
-
 After evaluating 6 models from the DS exploration notebook:
-
 | Model | Features | Balance | Class 0 F1 | Class 1 F1 | Class 1 Recall |
 |-------|----------|---------|------------|------------|----------------|
 | XGBoost | All | No | 0.88 | 0.00 | 0.00 |
