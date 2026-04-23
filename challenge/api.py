@@ -55,20 +55,3 @@ async def post_predict(data: PredictInput) -> dict:
     features = model.preprocess(flights_df)
     predictions = model.predict(features)
     return {"predict": predictions}
-
-@app.post("/predict", status_code=200)
-async def post_predict(data: PredictInput) -> dict:
-    print("📥 INPUT:", data.flights[0].dict())  # Debug
-    
-    flights_df = pd.DataFrame([f.dict() for f in data.flights])
-    print("📊 DF SHAPE:", flights_df.shape)
-    print("📊 DF HEAD:\n", flights_df.head())
-    
-    features = model.preprocess(flights_df)
-    print("🔍 FEATURES SHAPE:", features.shape)
-    print("🔍 FEATURES SAMPLE:", features.iloc[0].values)
-    
-    predictions = model.predict(features)
-    print("🎯 PRED RAW:", predictions)
-    
-    return {"predict": predictions.tolist()}

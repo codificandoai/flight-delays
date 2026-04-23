@@ -90,6 +90,11 @@ class DelayModel:
             random_state=1,
             learning_rate=0.01,
             scale_pos_weight=scale,
+            n_estimators=500,
+            max_depth=3,
+            subsample=0.8,
+            colsample_bytree=0.8,
+            eval_metric="logloss",
         )
         self._model.fit(features, target_values)
 
