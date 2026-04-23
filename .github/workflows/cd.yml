@@ -7,18 +7,30 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    
-    # Tests primero (CI integrado)
-    - name: Run all tests
-      run: |
-        make model-test
-        make api-test
-        make stress-test  # Tu API en Render
-    
-    # Deploy automático a Render
-    - name: Deploy to Render
-      uses: johnbeynon/render-deploy-action@v0.0.8
-      with:
-        service-id: ${{ secrets.RENDER_SERVICE_ID }}
-        api-key: ${{ secrets.RENDER_API_KEY }}
+      - uses: actions/checkout@v4
+
+      # Configurar Python e instalar dependencias
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest pytest-cov   # solo si no está en requirements.txt
+
+      # Tests primero (CI integrado)
+      - name: Run all tests
+        run: |
+          make model-test
+          make api-test
+          make stress-test  # Tu API en Render
+
+      # Deploy automático a Render
+      - name: Deploy to Render
+        uses: johnbeynon/render-deploy-action@v0.0.8
+        with:
+          service-id: ${{ secrets.RENDER_SERVICE_ID }}
+          api-key: ${{ secrets.RENDER_API_KEY }}
