@@ -1,5 +1,41 @@
 # Flight Delay Prediction — Challenge Documentation
 ## 1. Model Selection & Justification
+### **La tabla compara 6 modelos prediciendo retrasos de vuelos**
+| **Modelo** | **Features** | **Balanceo** | **Detecta retrasos** | **Precisión general** |
+|------------|--------------|--------------|---------------------|----------------------|
+| #3 XGBoost | **Top 10** | ✅ **SÍ** | **69%** ✅ **MEJOR** | 37% |
+| #1 XGBoost | Todos (37) | ✅ | 65% | 38% |
+| #5 LogReg | Top 10 | ✅ | 61% | 36% |
+| **Otros** | - | ❌ **NO** | **1-3%** ❌ **INÚTILES** | 1-5% |
+
+## 🏆 **GANADOR: Modelo #3**
+```
+✅ XGBoost + 10 mejores features + balanceo
+✅ Detecta 69% retrasos reales (Recall)
+✅ Solo 10 features vs 37 = MÁS RÁPIDO
+✅ Supera Logistic Regression +8 puntos
+```
+
+## 💡 **Lecciones clave (3 puntos)**
+1. **SIN balanceo = modelo muerto** (predice siempre "on_time")
+2. **Top 10 features = igual precisión + más rápido**
+3. **XGBoost >> Logistic Regression** (+8 puntos Recall)
+
+## 🎯 **API**
+```
+Input: flight=LA123, date=2026-07-15
+→ OPERA_LAT + MES_7 (julio) + TOP10 encoding
+→ Predicción: 69% chance retraso
+```
+
+```
+🏆 XGBoost Top10 + Balanceo = F1 0.37, Recall 0.69
+✅ 10 features: OPERA_*, MES_*, TIPOVUELO_*
+✅ Detecta 69% retrasos reales
+✅ API producción: 200ms predicción
+```
+**En 1 línea**: **XGBoost con 10 features + balanceo detecta 69% retrasos reales** (mejor que Logistic Regression y modelos sin balanceo). **¡Despliega #3!**
+
 ### Chosen Model: XGBoost Classifier with Class Balancing
 After evaluating 6 models from the DS exploration notebook:
 | Model | Features | Balance | Class 0 F1 | Class 1 F1 | Class 1 Recall |
@@ -167,6 +203,11 @@ docker run -p 8080:8080 flight-delay-api
 make model-test    # 4 tests — model preprocess, fit, predict
 make api-test      # 4 tests — predict success + 3 validation errors
 make stress-test   # 100 users, 60s, locust
+```
+
+### Render.com
+```
+UI deployment.
 ```
 
 ### Cloud Deployment (GCP Cloud Run example)
