@@ -23,7 +23,7 @@ install:		## Install dependencies
 	pip install -r requirements-test.txt
 	pip install -r requirements.txt
 
-STRESS_URL = https://flight-delays-kab8.onrender.com
+STRESS_URL = https://flight-delays-v10p.onrender.com
 .PHONY: stress-test
 stress-test:
 	# change stress url to your deployed app 
