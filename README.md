@@ -1,7 +1,8 @@
-# Software Engineer (ML & LLMs) Challenge
+# By Jhonn Andersson Sayo Puerto
+## Ando codificando.. AI
+### Software Engineer (ML & LLMs) Challenge, MLOps, DataScience, Statistic, ML and more....
 
 ## Overview
-
 Welcome to the **Software Engineer (ML & LLMs)** Application Challenge. In this, you will have the opportunity to get closer to a part of the reality of the role, and demonstrate your skills and knowledge in machine learning and cloud.
 
 ## Problem
