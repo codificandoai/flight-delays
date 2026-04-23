@@ -1,5 +1,5 @@
-# By Jhonn Andersson Sayo Puerto
-## Ando codificando.. AI
+# By Sayo
+## ando codificando.. AI
 ### Software Engineer (ML & LLMs) Challenge, MLOps, DataScience, Statistic, ML and more....
 
 ## Overview
